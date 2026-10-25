@@ -577,3 +577,137 @@ body {
     text-align: center;
     overflow-wrap: anywhere;
 }
+
+/* Page header with the back button (Manage and History) */
+.page-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 16px;
+    padding: 14px 20px;
+    z-index: 10;
+}
+
+    .page-header h1 {
+        margin: 0;
+    }
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 7px 14px;
+    border: 1px solid #d9e1eb;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #344054;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+    .back-link:hover {
+        border-color: #b8c9dc;
+        background: #eef4fb;
+    }
+
+    .back-link:focus-visible {
+        outline: 3px solid rgb(21 101 192 / 40%);
+        outline-offset: 2px;
+    }
+
+/* History page */
+.history-form {
+    padding: 16px;
+}
+
+    .history-form h2 {
+        margin-bottom: 0;
+    }
+
+    .history-form button[type="submit"] {
+        min-height: 44px;
+        margin-top: 6px;
+        padding: 8px 22px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+.history-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 14px;
+    margin-top: 8px;
+}
+
+    .history-fields label {
+        font-weight: 550;
+    }
+
+    .history-fields input,
+    .history-fields select {
+        min-height: 42px;
+        border-color: #c8d0da;
+        background: #fff;
+    }
+
+        .history-fields input:focus,
+        .history-fields select:focus {
+            outline: none;
+            border-color: #1565c0;
+            box-shadow: 0 0 0 3px rgb(21 101 192 / 14%);
+        }
+
+.history-list {
+    display: grid;
+    gap: 12px;
+}
+
+.history-row .badge.CheckedOut {
+    background: #b45309;
+}
+
+.history-entries {
+    margin-top: 10px;
+    border-left: 3px solid #d6e1f0;
+}
+
+    .history-entries .entry {
+        padding: 6px 0 6px 12px;
+        color: #555;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+        .history-entries .entry + .entry {
+            border-top: 1px dashed #e4e8ee;
+        }
+
+        .history-entries .entry input {
+            min-height: 36px;
+            padding: 5px 9px;
+            border: 1px solid #c8d0da;
+            border-radius: 7px;
+            font: inherit;
+        }
+
+        .history-entries .entry button {
+            min-height: 34px;
+            margin: 2px 4px 2px 0;
+            padding: 4px 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+@media (max-width: 520px) {
+    .page-header {
+        padding: 12px;
+    }
+
+    .history-fields {
+        grid-template-columns: 1fr;
+    }
+}

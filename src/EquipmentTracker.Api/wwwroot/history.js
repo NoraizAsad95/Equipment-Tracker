@@ -31,14 +31,6 @@ async function post(url, body) {
   return response;
 }
 
-function rowText(r) {
-  const qty = r.quantity > 1 ? ` ×${r.quantity}` : '';
-  const end = r.stillOut
-    ? `STILL OUT${r.returnedQuantity ? ` (${r.returnedQuantity} of ${r.quantity} returned)` : ''}`
-    : `returned ${r.returnedOn}`;
-  return `${r.borrower} · ${r.equipment}${qty} · out ${r.checkedOutOn} · due ${r.dueDate} · ${end}`;
-}
-
 function entryText(e) {
   const what = e.correctsEventId ? `Correction to entry #${e.correctsEventId}` : e.type;
   const qty = e.quantity ? ` ×${e.quantity}` : '';
@@ -68,13 +60,27 @@ function correctButton(entry) {
 }
 
 function renderRow(r) {
-  const li = el('li', 'item');
-  li.append(el('div', r.stillOut ? 'name overdue' : 'name', rowText(r)));
+  const qty = r.quantity > 1 ? ` ×${r.quantity}` : '';
+  const li = el('li', 'item history-row');
+
+  const top = el('div', 'top');
+  top.append(
+    el('span', r.stillOut ? 'name overdue' : 'name', `${r.borrower} · ${r.equipment}${qty}`),
+    el('span', `badge ${r.stillOut ? 'CheckedOut' : 'Available'}`, r.stillOut ? 'Still out' : 'Returned'));
+  li.append(top);
+
+  const end = r.stillOut
+    ? (r.returnedQuantity ? ` · ${r.returnedQuantity} of ${r.quantity} returned` : '')
+    : ` · returned ${r.returnedOn}`;
+  li.append(el('div', 'detail', `Out ${r.checkedOutOn} · due ${r.dueDate}${end}`));
+
+  const entries = el('div', 'history-entries');
   r.entries.forEach(e => {
-    const line = el('div', 'detail', entryText(e));
+    const line = el('div', 'entry', entryText(e));
     if (e.type !== 'Corrected') line.append(' ', correctButton(e));
-    li.append(line);
+    entries.append(line);
   });
+  li.append(entries);
   return li;
 }
 

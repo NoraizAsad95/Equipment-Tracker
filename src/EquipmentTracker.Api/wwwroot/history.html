@@ -7,23 +7,28 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+  <header class="page-header">
     <h1>History</h1>
-    <a href="/">← Back to equipment list</a>
+    <a class="back-link" href="/">← Back to equipment list</a>
   </header>
   <main>
     <p id="message" role="status" aria-live="polite"></p>
 
-    <form id="history-form" class="card">
+    <form id="history-form" class="card history-form">
       <h2>Show what was out</h2>
-      <label>Who are you? (Owner or Office) <select id="actor"></select></label>
-      <label>Your PIN <input id="pin" type="password" inputmode="numeric" autocomplete="off"></label>
-      <label>From <input id="from" type="date" required></label>
-      <label>To <input id="to" type="date" required></label>
+      <p class="section-hint">Pick the period to look back over. Items that are still out are always included.</p>
+
+      <div class="history-fields">
+        <label>Who are you? (Owner or Office) <select id="actor"></select></label>
+        <label>Your PIN <input id="pin" type="password" inputmode="numeric" autocomplete="off"></label>
+        <label>From <input id="from" type="date" required></label>
+        <label>To <input id="to" type="date" required></label>
+      </div>
+
       <button type="submit">Show history</button>
     </form>
 
-    <ul id="rows"></ul>
+    <ul id="rows" class="history-list"></ul>
   </main>
   <script src="history.js"></script>
 </body>
