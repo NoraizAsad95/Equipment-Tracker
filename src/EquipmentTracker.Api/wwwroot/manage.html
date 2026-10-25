@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage - Equipment Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Manage</h1>
+    <a href="/">← Back to equipment list</a>
+  </header>
+  <main>
+    <p id="message" role="status" aria-live="polite"></p>
+
+    <section class="card">
+        <h2>Owner verification</h2>
+        <p class="section-hint">Choose the Owner account and enter the PIN when saving management changes.</p>
+        <label>
+            Owner account
+            <select id="actor"></select>
+        </label>
+        <label>
+            Your PIN
+            <input id="pin" type="password" inputmode="numeric" autocomplete="off">
+        </label>
+    </section>
+
+    <section class="card">
+        <div class="section-heading">
+            <div>
+                <h2>Equipment</h2>
+                <p class="section-hint">Manage individually tracked items and counted equipment.</p>
+            </div>
+            <button type="button" id="add-equipment-btn">+ Add equipment</button>
+        </div>
+
+        <ul id="equipment-list" class="management-list"></ul>
+
+        <form id="equipment-form" class="management-form" hidden>
+            <h3 id="equipment-title">Add equipment</h3>
+            <input type="hidden" id="eq-id">
+
+            <label>Name <input id="eq-name" required maxlength="100"></label>
+
+            <label>
+                Type
+                <select id="eq-mode">
+                    <option value="Individual">Individual (tracked one by one)</option>
+                    <option value="Quantity">Quantity (counted)</option>
+                </select>
+            </label>
+
+            <label id="eq-total-row">
+                Total quantity
+                <input id="eq-total" type="number" min="1" value="1">
+            </label>
+
+            <label id="eq-approval-row" class="check">
+                <input id="eq-approval" type="checkbox">
+                Needs approval before checkout
+            </label>
+
+            <label id="eq-approver-row">
+                Approver
+                <select id="eq-approver"></select>
+            </label>
+
+            <div class="form-actions">
+                <button type="submit">Save equipment</button>
+                <button type="button" id="eq-cancel" class="secondary">Cancel</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="card">
+        <div class="section-heading">
+            <div>
+                <h2>People</h2>
+                <p class="section-hint">Manage staff, office users, and owners.</p>
+            </div>
+            <button type="button" id="add-person-btn">+ Add person</button>
+        </div>
+
+        <ul id="people-list" class="management-list"></ul>
+
+        <form id="person-form" class="management-form" hidden>
+            <h3 id="person-title">Add person</h3>
+            <input type="hidden" id="p-id">
+
+            <label>Name <input id="p-name" required maxlength="100"></label>
+
+            <label>
+                Role
+                <select id="p-role">
+                    <option>Staff</option>
+                    <option>Office</option>
+                    <option>Owner</option>
+                </select>
+            </label>
+
+            <label>
+                Person PIN
+                <input id="p-pin" type="password" inputmode="numeric" autocomplete="off">
+                <span class="field-hint">4 to 6 digits. Leave blank when editing to keep the current PIN.</span>
+            </label>
+
+            <div class="form-actions">
+                <button type="submit">Save person</button>
+                <button type="button" id="p-cancel" class="secondary">Cancel</button>
+            </div>
+        </form>
+    </section>
+  </main>
+  <script src="manage.js"></script>
+</body>
+</html>

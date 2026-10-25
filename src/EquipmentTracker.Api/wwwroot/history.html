@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>History - Equipment Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>History</h1>
+    <a href="/">← Back to equipment list</a>
+  </header>
+  <main>
+    <p id="message" role="status" aria-live="polite"></p>
+
+    <form id="history-form" class="card">
+      <h2>Show what was out</h2>
+      <label>Who are you? (Owner or Office) <select id="actor"></select></label>
+      <label>Your PIN <input id="pin" type="password" inputmode="numeric" autocomplete="off"></label>
+      <label>From <input id="from" type="date" required></label>
+      <label>To <input id="to" type="date" required></label>
+      <button type="submit">Show history</button>
+    </form>
+
+    <ul id="rows"></ul>
+  </main>
+  <script src="history.js"></script>
+</body>
+</html>

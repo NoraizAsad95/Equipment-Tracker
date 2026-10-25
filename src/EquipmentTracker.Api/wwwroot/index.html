@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Equipment Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="equipment-header">
+        <h1>Equipment Tracker</h1>
+
+        <nav class="header-actions" aria-label="Main navigation">
+            <a href="history.html">History</a>
+            <a href="manage.html">Manage</a>
+        </nav>
+
+        <input id="search"
+               type="search"
+               placeholder="Search equipment or person..."
+               autocomplete="off"
+               aria-label="Search equipment or person">
+    </header>
+  <main>
+    <details class="card">
+      <summary>Check out equipment</summary>
+      <form id="checkout-form">
+        <label>Who are you? <select id="borrower" required></select></label>
+        <label>Due date <input id="due" type="date" required></label>
+        <div id="pick"></div>
+        <button type="submit">Check out</button>
+      </form>
+    </details>
+    <p id="message" role="status" aria-live="polite"></p>
+    <ul id="list"></ul>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
