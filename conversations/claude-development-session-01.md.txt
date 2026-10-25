@@ -220,17 +220,7 @@
   skip the helper scripts unless you say otherwise.
 
 ✻ Worked for 17s · done Wednesday 1:53 AM
-
-> Yes. This is a hiring assessment from Solvefy, and I am the candidate         
-  completing it.                                                                
-                                                                                
-  Please use the requirements from the provided task document as the source of  
-  truth. I want to follow the Coaching path and work through the ambiguities    
-  one at a time.                                                                
-                                                                                
-  Do not invent requirements that are not supported by the task. When something 
-  is ambiguous, present the reasonable options and help me evaluate the         
-  trade-offs, but let me make the final decision.                               
+                           
 
 ● Write(_bmad-output\planning-artifacts\briefs\brief-Equipment-Tracker-2026-10-2
        1\brief.md)
